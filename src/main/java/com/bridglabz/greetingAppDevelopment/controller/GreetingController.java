@@ -1,5 +1,6 @@
 package com.bridglabz.greetingAppDevelopment.controller;
 
+import com.bridglabz.greetingAppDevelopment.dto.GreetDTO;
 import com.bridglabz.greetingAppDevelopment.entity.Greeting;
 import com.bridglabz.greetingAppDevelopment.service.GreetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,12 @@ public class GreetingController {
     //Calls the getGreetingMessage method from UserService to get the greeting message
     public String sayHelloGet() {
         return greetService.getGreetingMessage();
+    }
+
+    //UC_3- to give Greeting message with name
+    //Post : http://localhost/greeting/postGreet
+    @PostMapping("/postGreet")
+    public String getGreetingMessage(@RequestBody GreetDTO request) {
+        return greetService.greetingMessage(request.getFirstName(), request.getLastName());
     }
 }
