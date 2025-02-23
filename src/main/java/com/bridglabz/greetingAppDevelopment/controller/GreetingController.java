@@ -1,9 +1,12 @@
 package com.bridglabz.greetingAppDevelopment.controller;
 
 import com.bridglabz.greetingAppDevelopment.entity.Greeting;
+import com.bridglabz.greetingAppDevelopment.service.GreetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+//Base Path
 @RequestMapping("/greeting")
 public class GreetingController {
 
@@ -35,4 +38,18 @@ public class GreetingController {
         return new Greeting("Hello : this is post mapping");
     }
 
+    //UC_2- to return a simple greeting message
+    // curl -X GET http://localhost:8080/greeting/greet
+    @Autowired
+    //Automatically injects the UserService bean into this controller
+    private GreetService greetService;
+    //Constructor-based Dependency Injection
+    public GreetingController(GreetService greetService) {
+        this.greetService = greetService;
+    }
+    @GetMapping("/greet")
+    //Calls the getGreetingMessage method from UserService to get the greeting message
+    public String sayHelloGet() {
+        return greetService.getGreetingMessage();
+    }
 }
