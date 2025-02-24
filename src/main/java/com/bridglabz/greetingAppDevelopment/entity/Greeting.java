@@ -1,14 +1,14 @@
 package com.bridglabz.greetingAppDevelopment.entity;
 
 //Greeting class
-public class Greeting {
+public class
+Greeting {
     private String message;
 
     //Constructor
     public Greeting(String message) {
         this.message = message;
     }
-
     //Getter
     public String getMessage() {
         return message;
