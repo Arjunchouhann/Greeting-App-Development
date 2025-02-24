@@ -3,6 +3,7 @@ import com.bridglabz.greetingAppDevelopment.dto.GreetDTO;
 import com.bridglabz.greetingAppDevelopment.entity.GreetingEntity;
 import com.bridglabz.greetingAppDevelopment.service.GreetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -91,4 +92,11 @@ public class GreetingController {
     public Optional<GreetingEntity> getGreetingById(@PathVariable Long id) {
         return userService.getMessageById(id);
     }
+
+    // UC_7- to update a greeting message by ID
+    @PutMapping("/greetings/{id}")
+    public GreetingEntity updateGreeting(@PathVariable Long id, @RequestBody String newMessage) {
+        return userService.updateMessage(id, newMessage);
+    }
+
 }

@@ -63,5 +63,17 @@ public class GreetService {
         return repository.findById(id);
     }
 
-
+    // UC_7- method to update the greeting message in the repository
+    public GreetingEntity updateMessage(Long id, String newMessage) {
+        Optional<GreetingEntity> optionalUserEntity = repository.findById(id);
+        if (optionalUserEntity.isPresent()) {
+            GreetingEntity userEntity = optionalUserEntity.get();
+            userEntity.setMessage(newMessage);
+            return repository.save(userEntity);
+        }
+        else {
+            // Handle the case when the entity is not found
+            return null;
+        }
+    }
 }
