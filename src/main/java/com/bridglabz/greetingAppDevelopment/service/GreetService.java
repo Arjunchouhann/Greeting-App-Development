@@ -52,6 +52,7 @@ public class GreetService {
         return repository.save(new GreetingEntity(message));
     }
 
+    //UC_6-list all greeting messages
     //retrieves all greeting messages from the database
     public List<GreetingEntity> getAllMessages() {
         return repository.findAll();
@@ -61,4 +62,6 @@ public class GreetService {
     public Optional<GreetingEntity> getMessageById(Long id) {
         return repository.findById(id);
     }
+
+
 }
