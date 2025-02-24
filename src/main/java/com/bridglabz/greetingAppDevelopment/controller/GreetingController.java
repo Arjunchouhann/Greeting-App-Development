@@ -83,4 +83,9 @@ public class GreetingController {
     public List<GreetingEntity> getAllGreetings() {
         return userService.getAllMessages();
     }
+    //UC_5-endpoint to fetch a greeting message by ID
+    @GetMapping("/{id}")
+    public Optional<GreetingEntity> getGreetingById(@PathVariable Long id) {
+        return userService.getMessageById(id);
+    }
 }
